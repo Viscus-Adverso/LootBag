@@ -6,6 +6,34 @@ import java.util.Scanner;
 
 public class Main {
 
+
+    static Loot createLoot(String category)  {
+        Loot loot = new Loot();
+        loot.setAmount(1);
+        System.out.println("Please select a category.");
+        System.out.println("Press 1 for weapon.");
+        System.out.println("Press 2 for armor.");
+        System.out.println("Press 3 for gear.");
+        System.out.println("Press 4 for treasure.");
+        System.out.println("Press 5 for miscellaneous.");
+        if(category.equalsIgnoreCase("1")) {
+            loot = new Weapons();
+        }
+        else if(category.equalsIgnoreCase("2")){
+            loot = new Armor();
+        }
+        else if(category.equalsIgnoreCase("3")){
+            loot = new Gear();
+        }
+        else if(category.equalsIgnoreCase("4")){
+            loot = new Treasure();
+        }
+        else if(category.equalsIgnoreCase("5")){
+            loot = new Miscellaneous();
+        }
+
+    }
+
     public static void main(String[] args) {
         HashMap<String, ArrayList<Loot>> users = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +63,7 @@ public class Main {
                     case "1":
                         System.out.println("Enter your item.");
                         String loot = scanner.nextLine();
-                        Loot loota = new Loot(loot, 1);
+                        Loot loota = createLoot();
                         loots.add(loota);
                         break;
                     case "2":
@@ -55,7 +83,7 @@ public class Main {
                         for (int k = 0; k < loots.size(); k++) {
                             Loot loot3 = loots.get(k);
                             int num = k + 1;
-                            System.out.printf("%s %s %s\n", num, loot3.amount, loot3.loot);
+                            System.out.printf("%s %s %s %s\n", num, loot3.amount, loot3.loot, loot3.category);
                         }
                         break;
                     case "5":

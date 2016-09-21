@@ -8,6 +8,9 @@ public class Loot {
     int amount;
     String category;
 
+
+
+
     public Loot(String loot, int amount) {
         this.loot = loot;
         this.amount = amount;
@@ -16,5 +19,29 @@ public class Loot {
 
 
     public Loot() {
+    }
+
+    public String getLoot() {
+        return loot;
+    }
+
+    public void setLoot(String loot) {
+        this.loot = loot;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
