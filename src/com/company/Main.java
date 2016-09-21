@@ -7,32 +7,49 @@ import java.util.Scanner;
 public class Main {
 
 
-    static Loot createLoot(String category)  {
+    static Loot createLoot(Scanner scanner) {
         Loot loot = new Loot();
+        System.out.println("Enter your item.");
+        String lootName = scanner.nextLine();
+        loot.setLoot(lootName);
         loot.setAmount(1);
-        System.out.println("Please select a category.");
-        System.out.println("Press 1 for weapon.");
-        System.out.println("Press 2 for armor.");
-        System.out.println("Press 3 for gear.");
-        System.out.println("Press 4 for treasure.");
-        System.out.println("Press 5 for miscellaneous.");
-        if(category.equalsIgnoreCase("1")) {
-            loot = new Weapons();
-        }
-        else if(category.equalsIgnoreCase("2")){
-            loot = new Armor();
-        }
-        else if(category.equalsIgnoreCase("3")){
-            loot = new Gear();
-        }
-        else if(category.equalsIgnoreCase("4")){
-            loot = new Treasure();
-        }
-        else if(category.equalsIgnoreCase("5")){
-            loot = new Miscellaneous();
-        }
 
+
+            System.out.println("Please select a category.");
+            System.out.println("Press 1 for weapon.");
+            System.out.println("Press 2 for armor.");
+            System.out.println("Press 3 for gear.");
+            System.out.println("Press 4 for treasure.");
+            System.out.println("Press 5 for miscellaneous.");
+            String category = scanner.nextLine();
+
+                boolean isVaildCategory = true;
+                while(isVaildCategory) {
+
+                    if (category.equalsIgnoreCase("1")) {
+                        loot.setCategory("weapons");
+                        break;
+                    } else if (category.equalsIgnoreCase("2")) {
+                        loot.setCategory("armor");
+                        break;
+                    } else if (category.equalsIgnoreCase("3")) {
+                        loot.setCategory("gear");
+                        break;
+                    } else if (category.equalsIgnoreCase("4")) {
+                        loot.setCategory("treasure");
+                        break;
+                    } else if (category.equalsIgnoreCase("5")) {
+                        loot.setCategory("miscellaneous");
+                        break;
+                    } else {
+                        System.out.println("not valid");
+                        return null;
+                    }
+                }
+                return loot;
     }
+
+
 
     public static void main(String[] args) {
         HashMap<String, ArrayList<Loot>> users = new HashMap<>();
@@ -61,9 +78,8 @@ public class Main {
 
                 switch (option) {
                     case "1":
-                        System.out.println("Enter your item.");
-                        String loot = scanner.nextLine();
-                        Loot loota = createLoot();
+                        Loot loota = createLoot(scanner);
+                        if (loota != null )
                         loots.add(loota);
                         break;
                     case "2":
