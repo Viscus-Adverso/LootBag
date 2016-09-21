@@ -6,12 +6,15 @@ package com.company;
 public class Loot {
     String loot;
     int amount;
-
+    String category;
 
     public Loot(String loot, int amount) {
         this.loot = loot;
         this.amount = amount;
+        this.category = category;
     }
 
 
+    public Loot() {
+    }
 }
